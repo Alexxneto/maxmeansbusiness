@@ -1,0 +1,17 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/maxmeansbusiness/style.css"><meta name="robots" content="noindex"><meta name="referrer" content="no-referrer"><title>TikTok authorization - Max Means Business</title></head><body><header><img src="/maxmeansbusiness/icon.png" alt=""><div><strong>Max Means Business</strong><br><nav><a href="/maxmeansbusiness/">Home</a><a href="/maxmeansbusiness/terms/">Terms</a><a href="/maxmeansbusiness/privacy/">Privacy</a></nav></div></header>
+<h1>TikTok authorization</h1>
+<div id="out" class="box">Waiting for TikTok...</div>
+<script>
+const q = new URLSearchParams(location.search), out = document.getElementById('out');
+if (q.get('error')) {
+  out.textContent = 'TikTok refused: ' + q.get('error') + ' ' + (q.get('error_description') || '');
+} else if (q.get('code')) {
+  out.innerHTML = '<p>Done. Copy this whole address and paste it to Claude:</p><p><code id="u"></code></p><button id="b">Copy</button>';
+  document.getElementById('u').textContent = location.href;
+  document.getElementById('b').onclick = () => navigator.clipboard.writeText(location.href).then(() => b.textContent = 'Copied');
+} else {
+  out.textContent = 'This page receives the TikTok login of the Max Means Business tool. Nothing to do here.';
+}
+</script>
+<p>The code is shown only in your browser; this page does not send it anywhere.</p>
+</body></html>
